@@ -1,0 +1,70 @@
+@use '../../styles/base.scss' as *;
+
+.container{
+    background-color: $bg-secondary;
+    width: 100vw;
+    height: 5rem;
+    display: flex;
+    margin: 0;
+}
+
+.header {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .3s ease-in-out;
+    &_links{
+        display: flex;
+        width: 25%;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 2rem;
+        div{
+            margin: 0;
+        }
+        svg{
+            width: 2.5rem;
+            height: 2.5rem;
+            cursor: pointer;
+            &:hover{
+                fill: $bg-tertiary;
+            }
+        }
+    }
+
+    &_center{
+        font-size: 3.6rem;
+        width: 50%;
+        text-align: center;
+        a{
+            color: $text-headline-secondary;
+            text-decoration: none; 
+        }
+    }
+
+    &_btns{
+        display: flex;
+        width: 25%;
+        
+        align-items: center;
+        gap: 2rem;
+        transition: all .3s ease-in-out;
+        
+        &_signin{
+            @include button(
+                $bg-color: $bg-secondary,
+                $text-color: $text-headline-secondary
+            );
+        }
+        &_signup{
+            @include button(
+                $bg-color: $bg-tertiary,
+                $text-color: $text-headline-tertiary
+            );
+        }
+    }
+
+
+}
