@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import Header from './components/header';
 import { ReduxProvider } from '@/redux/provider';
 import Aside from './components/aside';
+import Search from './components/search';
 
 export const metadata: Metadata = {
    title: 'Timesprint',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
          <body>
             <ReduxProvider>
+               <Search />
                <Header />
                <Aside />
                {children}

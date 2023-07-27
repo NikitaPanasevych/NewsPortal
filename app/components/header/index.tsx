@@ -7,6 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
 import { toggleDrawer } from '@/redux/features/drawer-slice';
+import { toggleSearch } from '@/redux/features/search.slice';
 
 export default function Header() {
    const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function Header() {
                <div onClick={() => dispatch(toggleDrawer())} className={styles.header_links_icon}>
                   <MenuIcon sx={{ color: 'white' }} />
                </div>
-               <div className={styles.header_links_icon}>
+               <div onClick={() => dispatch(toggleSearch())} className={styles.header_links_icon}>
                   <SearchIcon sx={{ color: 'white' }} />
                </div>
             </div>
