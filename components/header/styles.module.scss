@@ -47,17 +47,9 @@
     &_btns{
         display: flex;
         width: 25%;
-        
         align-items: center;
         gap: 2rem;
         transition: all .3s ease-in-out;
-        
-        &_signin{
-            @include button(
-                $bg-color: $bg-secondary,
-                $text-color: $text-headline-secondary
-            );
-        }
         &_signup{
             @include button(
                 $bg-color: $bg-tertiary,

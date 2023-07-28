@@ -1,11 +1,11 @@
 'use client';
 
-import './styles/globals.scss';
+import '../styles/globals.scss';
 import type { Metadata } from 'next';
-import Header from './components/header';
+import Header from '../components/header';
 import { ReduxProvider } from '@/redux/provider';
-import Aside from './components/aside';
-import Search from './components/search';
+import Aside from '../components/aside';
+import Search from '../components/search';
 
 export const metadata: Metadata = {
    title: 'Timesprint',

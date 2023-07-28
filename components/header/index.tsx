@@ -27,8 +27,9 @@ export default function Header() {
                <Link href="/">Timesprint</Link>
             </div>
             <div className={styles.header_btns}>
-               <button className={styles.header_btns_signin}>Sign In</button>
-               <button className={styles.header_btns_signup}>Sign Up</button>
+               <button className={styles.header_btns_signup}>
+                  <Link href="/auth/enter-email">Sign Up</Link>
+               </button>
             </div>
          </header>
       </div>
