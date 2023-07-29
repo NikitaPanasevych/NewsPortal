@@ -1,6 +1,6 @@
 'use client';
 
-import { emailSchema } from '@/shared/schemas/emailSchema';
+import { emailSchema } from '@/shared/schemas/email.schema';
 import { useFormik } from 'formik';
 import styles from './styles.module.scss';
 

@@ -1,0 +1,63 @@
+@use '../../../styles/base.scss' as *;
+
+.login{
+    @include auth-container;
+
+    h1{
+        font-size: 3.6rem;
+        font-weight: 600;
+        margin: 0px 0px 1em;
+        text-align: center;
+    }
+
+    &_form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+
+        &_field{
+            width: 100%;
+            margin: 0px 0px 1rem;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            border: none;
+
+            label{
+                font-size: 1.6rem;
+                font-weight: 600;
+                margin: 0px 0px 0.5rem;
+            }
+
+            input{
+                @include auth-input;
+            }
+        }
+
+        button{
+            @include auth-button;
+        }
+    }
+
+    &_forgot{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: $text-primary;
+        transition: all .3s ease-in-out;
+        a{
+            &:hover{
+                color: darken($text-primary, 10%);
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
