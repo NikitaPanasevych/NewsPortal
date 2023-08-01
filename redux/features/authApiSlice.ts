@@ -1,0 +1,67 @@
+import { apiSlice } from '../services/apiSlice';
+
+interface User {
+	email: string;
+}
+
+interface SocialAuth {
+	state: string;
+	code: string;
+	provider: string;
+}
+
+interface CreateResponse {
+	success: boolean;
+	user: User;
+}
+
+const authApiSlice = apiSlice.injectEndpoints({
+	endpoints: (builder) => ({
+		socialAuth: builder.mutation({
+			query: ({ state, code, provider }) => ({
+				url: `/o/${provider}/?state=${encodeURIComponent(state)}&code=${encodeURIComponent(code)}`,
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json/x-www-form-urlencoded',
+				},
+			}),
+		}),
+		login: builder.mutation({
+			query: ({ email, password }) => ({
+				url: '/user/login/',
+				method: 'POST',
+				body: { email, password },
+			}),
+		}),
+		register: builder.mutation({
+			query: ({ email, password }) => ({
+				url: '/user/register/',
+				method: 'POST',
+				body: { email, password },
+			}),
+		}),
+		resetPassword: builder.mutation({
+			query: ({ email }) => ({
+				url: '/jwt/reset_password',
+				method: 'POST',
+				body: { email },
+			}),
+		}),
+		resetPasswordConfirm: builder.mutation({
+			query: ({ uid, token, new_password, re_new_password }) => ({
+				url: '/jwt/registration',
+				method: 'POST',
+				body: { uid, token, new_password, re_new_password },
+			}),
+		}),
+	}),
+});
+
+export const {
+	useSocialAuthMutation,
+	useLoginMutation,
+	useRegisterMutation,
+	useResetPasswordMutation,
+	useResetPasswordConfirmMutation,
+} = authApiSlice;
