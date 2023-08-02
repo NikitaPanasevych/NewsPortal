@@ -17,6 +17,9 @@ interface CreateResponse {
 
 const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
+		getArticles: builder.query({
+			query: () => '/articles/',
+		}),
 		socialAuth: builder.mutation({
 			query: ({ state, code, provider }) => ({
 				url: `/o/${provider}/?state=${encodeURIComponent(state)}&code=${encodeURIComponent(code)}`,
@@ -46,6 +49,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 				url: '/user/verify/',
 				method: 'POST',
 				body: { email },
+				accept: '*/*',
 			}),
 		}),
 		resetPassword: builder.mutation({
@@ -72,4 +76,5 @@ export const {
 	useVerifyEmailMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,
+	useGetArticlesQuery,
 } = authApiSlice;

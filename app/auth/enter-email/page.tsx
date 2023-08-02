@@ -17,12 +17,14 @@ export default function EnterEmail() {
 		})
 			.unwrap()
 			.then((res) => {
-				toast.success(res);
-				res.user_found ? router.push('/auth/login') : router.push('/auth/register');
+				if (res.user_found) {
+					router.push('/auth/login');
+				}
 			})
 			.catch((err) => {
-				toast.error('Something went wrong!');
-				console.log(err);
+				if (!err.data.user_found) {
+					router.push('/auth/register');
+				}
 			});
 	};
 
