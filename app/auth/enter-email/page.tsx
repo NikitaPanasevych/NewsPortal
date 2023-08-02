@@ -1,52 +1,13 @@
 'use client';
 
-import { useVerifyEmailMutation } from '@/redux/features/authApiSlice';
-import { emailSchema } from '@/shared/schemas/email.schema';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import { EnterEmailForm } from '@/components/forms';
 import styles from './styles.module.scss';
 
 export default function EnterEmail() {
-	const router = useRouter();
-	const [verify, { isLoading, isError, error }] = useVerifyEmailMutation();
-
-	const onSubmit = (values: any) => {
-		verify({
-			email: values.email,
-		})
-			.unwrap()
-			.then((res) => {
-				if (res.user_found) {
-					router.push('/auth/login');
-				}
-			})
-			.catch((err) => {
-				if (!err.data.user_found) {
-					router.push('/auth/register');
-				}
-			});
-	};
-
-	const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
-		initialValues: {
-			email: '',
-		},
-		validationSchema: emailSchema,
-		onSubmit,
-	});
-
 	return (
 		<div className={styles.email}>
 			<h1>Log in or create an account</h1>
-			<form method="post" onSubmit={handleSubmit} autoComplete="off" className={styles.email_form}>
-				<fieldset className={styles.email_form_field}>
-					<label htmlFor="email">Email Address</label>
-					<input name="email" value={values.email} onBlur={handleBlur} onChange={handleChange} type="text" />
-					{errors.email && touched.email ? <span>{errors.email}</span> : null}
-				</fieldset>
-				<button type="submit">Continue</button>
-			</form>
+			<EnterEmailForm />
 			<div className={styles.email_divider}>
 				<span>or</span>
 			</div>
