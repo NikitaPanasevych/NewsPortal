@@ -22,7 +22,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 			try {
 				const refreshResult = await baseQuery(
 					{
-						url: '/jwt/refresh/',
+						url: '/api-refresh/',
 						method: 'POST',
 					},
 					api,
@@ -30,7 +30,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 				);
 				if (refreshResult.data) {
 					api.dispatch(setAuth());
-
 					result = await baseQuery(args, api, extraOptions);
 				} else {
 					api.dispatch(logout());

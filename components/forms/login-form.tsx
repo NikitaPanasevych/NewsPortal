@@ -1,11 +1,8 @@
-'use client';
-
-import { useRegister } from '@/hooks';
-import React from 'react';
+import { useLogin } from '@/hooks';
 import Form from './form';
 
-export default function RegisterForm() {
-	const { values, errors, touched, handleChange, handleSubmit, isLoading } = useRegister();
+export default function LoginForm() {
+	const { values, errors, touched, handleChange, handleSubmit, isLoading } = useLogin();
 
 	const config = [
 		{
@@ -27,7 +24,7 @@ export default function RegisterForm() {
 	return (
 		<Form
 			config={config}
-			btnText="Register"
+			btnText="Log in"
 			isLoading={isLoading}
 			handleSubmit={handleSubmit}
 			handleChange={handleChange}
