@@ -8,6 +8,8 @@ import Aside from '../components/common/aside';
 import Search from '../components/common/search';
 import { Setup } from '@/components/utils';
 import Loader from '@/components/common/loader';
+import Transition from '@/components/common/wrapper';
+import PageWrapper from '@/components/common/wrapper';
 
 export const metadata: Metadata = {
 	title: 'Timesprint',

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import { useGetArticlesQuery } from '../redux/features/authApiSlice';
+import PageWrapper from '@/components/common/wrapper';
 
 export default function Home() {
 	return (
-		<main>
-			<h1 style={{ textAlign: 'center' }}>Hello</h1>
-		</main>
+		<PageWrapper>
+			<main>
+				<h1 style={{ textAlign: 'center' }}>Hello</h1>
+			</main>
+		</PageWrapper>
 	);
 }

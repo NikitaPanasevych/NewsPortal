@@ -52,7 +52,7 @@ export default function Form({
 				<input id="checkbox" type="checkbox" />
 				<label htmlFor="terms">I agree to the terms and conditions, that we don't have.</label>
 			</div>
-			{errors.email && touched.email ? <div className={styles.login_form_error}>{errors.email}</div> : null}
+			{errors?.email && touched?.email ? <div className={styles.login_form_error}>{errors.email}</div> : null}
 			<div></div>
 			<button type="submit">{isLoading ? <Spinner /> : btnText}</button>
 		</form>
