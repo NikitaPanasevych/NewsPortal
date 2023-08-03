@@ -6,14 +6,22 @@ interface Props {
 	type: string;
 	readonly?: boolean | false;
 	handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	handleBlur: (e: any) => void;
 	children: React.ReactNode;
 }
 
-export default function Input({ label, type, value, readonly, handleChange, children }: Props) {
+export default function Input({ label, type, value, readonly, handleChange, handleBlur, children }: Props) {
 	return (
 		<>
 			<label htmlFor={label}>{children}</label>
-			<input readOnly={readonly} name={label} value={value} onChange={handleChange} type={type} />
+			<input
+				readOnly={readonly}
+				name={label}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				type={type}
+			/>
 		</>
 	);
 }

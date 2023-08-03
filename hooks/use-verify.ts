@@ -1,13 +1,18 @@
 import { useVerifyEmailMutation } from '@/redux/features/authApiSlice';
+import { changeEmail } from '@/redux/features/emailSlice';
 import { emailSchema } from '@/shared/schemas/email.schema';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export default function useVerify() {
 	const router = useRouter();
 	const [verify, { isLoading, isError, error }] = useVerifyEmailMutation();
+	const dispatch = useDispatch();
 
 	const onSubmit = (values: any) => {
+		dispatch(changeEmail(values.email));
 		verify({
 			email: values.email,
 		})

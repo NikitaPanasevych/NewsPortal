@@ -7,6 +7,7 @@ import { ReduxProvider } from '@/redux/provider';
 import Aside from '../components/common/aside';
 import Search from '../components/common/search';
 import { Setup } from '@/components/utils';
+import Loader from '@/components/common/loader';
 
 export const metadata: Metadata = {
 	title: 'Timesprint',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body>
 				<ReduxProvider>
+					<Loader />
 					<Setup />
 					<Search />
 					<Header />

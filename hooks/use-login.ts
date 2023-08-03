@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { useLoginMutation } from '@/redux/features/authApiSlice';
 import { toast } from 'react-toastify';
 import { setAuth } from '@/redux/features/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
 export default function useLogin() {
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const [password, setPassword] = useState('password');
+
+	const email = useSelector((state: any) => state.emailReducer.email);
 
 	const [login, { isLoading, error, data }] = useLoginMutation();
 
@@ -32,7 +33,7 @@ export default function useLogin() {
 
 	const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
 		initialValues: {
-			email: 'example@gmail.com',
+			email,
 			password: '',
 		},
 		onSubmit,

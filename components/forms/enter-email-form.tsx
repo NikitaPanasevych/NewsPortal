@@ -8,7 +8,7 @@ export default function enterEmailForm() {
 	const config = [
 		{
 			value: values.email,
-			label: 'Email',
+			label: 'email',
 			type: 'text',
 			readonly: false,
 			handleChange: handleChange,
@@ -22,6 +22,9 @@ export default function enterEmailForm() {
 			isLoading={isLoading}
 			handleSubmit={handleSubmit}
 			handleChange={handleChange}
+			handleBlur={handleBlur}
+			errors={errors}
+			touched={touched}
 		/>
 	);
 }

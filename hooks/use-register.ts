@@ -1,10 +1,12 @@
 import { useRegisterMutation } from '@/redux/features/authApiSlice';
 import { registerSchema } from '@/shared/schemas/register.schema';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 export default function useRegister() {
 	const [register, { isLoading, isError, error }] = useRegisterMutation();
+	const email = useSelector((state: any) => state.emailReducer.email);
 
 	const onSubmit = (values: any) => {
 		register({
@@ -23,7 +25,7 @@ export default function useRegister() {
 
 	const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
 		initialValues: {
-			email: 'example@gmail.com',
+			email,
 			password: '',
 		},
 		validationSchema: registerSchema,
