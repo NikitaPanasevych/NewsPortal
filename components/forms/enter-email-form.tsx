@@ -1,9 +1,9 @@
-import { useVerify } from '@/hooks';
+import { useVerifyEmail } from '@/hooks';
 import React from 'react';
 import Form from './form';
 
 export default function enterEmailForm() {
-	const { values, errors, touched, handleChange, handleSubmit, handleBlur, isLoading } = useVerify();
+	const { values, errors, touched, handleChange, handleSubmit, handleBlur, isLoading } = useVerifyEmail();
 
 	const config = [
 		{

@@ -1,52 +1,21 @@
-import { useVerifyEmailMutation } from '@/redux/features/authApiSlice';
-import { changeEmail } from '@/redux/features/emailSlice';
-import { emailSchema } from '@/shared/schemas/email.schema';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useAppDispatch } from '@/redux/hooks';
+import { setAuth, finishInitialLoad } from '@/redux/features/authSlice';
+import { useVerifyMutation } from '@/redux/features/authApiSlice';
 
 export default function useVerify() {
-	const router = useRouter();
-	const [verify, { isLoading, isError, error }] = useVerifyEmailMutation();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const onSubmit = (values: any) => {
-		dispatch(changeEmail(values.email));
-		verify({
-			email: values.email,
-		})
+	const [verify] = useVerifyMutation();
+
+	useEffect(() => {
+		verify(undefined)
 			.unwrap()
-			.then((res) => {
-				if (res.user_found) {
-					router.push('/auth/login');
-				}
+			.then(() => {
+				dispatch(setAuth());
 			})
-			.catch((err) => {
-				if (!err.data.user_found) {
-					router.push('/auth/register');
-				}
+			.finally(() => {
+				dispatch(finishInitialLoad());
 			});
-	};
-
-	const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
-		initialValues: {
-			email: '',
-		},
-		validationSchema: emailSchema,
-		onSubmit,
-	});
-
-	return {
-		values,
-		errors,
-		touched,
-		handleChange,
-		handleSubmit,
-		handleBlur,
-		onSubmit,
-		isLoading,
-		isError,
-		error,
-	};
+	}, []);
 }

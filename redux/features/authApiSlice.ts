@@ -52,6 +52,12 @@ const authApiSlice = apiSlice.injectEndpoints({
 				accept: '*/*',
 			}),
 		}),
+		verify: builder.mutation({
+			query: () => ({
+				url: '/user/verify/',
+				method: 'POST',
+			}),
+		}),
 		resetPassword: builder.mutation({
 			query: ({ email }) => ({
 				url: '/jwt/reset_password',
@@ -73,6 +79,7 @@ export const {
 	useSocialAuthMutation,
 	useLoginMutation,
 	useRegisterMutation,
+	useVerifyMutation,
 	useVerifyEmailMutation,
 	useResetPasswordMutation,
 	useResetPasswordConfirmMutation,

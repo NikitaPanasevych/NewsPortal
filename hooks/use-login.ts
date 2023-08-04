@@ -1,13 +1,13 @@
 import { useFormik } from 'formik';
-import { useState } from 'react';
 import { useLoginMutation } from '@/redux/features/authApiSlice';
 import { toast } from 'react-toastify';
 import { setAuth } from '@/redux/features/authSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '@/redux/hooks';
 
 export default function useLogin() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 
 	const email = useSelector((state: any) => state.emailReducer.email);
