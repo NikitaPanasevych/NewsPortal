@@ -18,6 +18,10 @@
         width: 100%;
         margin: 0;
 
+        &_error{
+            @include form-error;
+        }
+
         &_field{
             width: 100%;
             margin: 0px 0px 1rem;
@@ -49,10 +53,7 @@
             checkbox{
                 margin: 0px 0.5rem 0px 0px;
             }
-
-            a{
-                
-            }
+        
         }
     }
 }
