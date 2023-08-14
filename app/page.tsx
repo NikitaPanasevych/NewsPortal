@@ -1,14 +1,15 @@
+import SwiperComponent from '@/components/common/swiper';
 import PageWrapper from '@/components/common/wrapper';
-import Link from 'next/link';
+import '../styles/base.scss';
+import CategorySection from './components/categorySection';
 
 export default function Home() {
-	return (
-		<PageWrapper>
-			<main>
-				<h1 style={{ textAlign: 'center' }}>
-					<Link href={'/tech'}>Hello</Link>
-				</h1>
-			</main>
-		</PageWrapper>
-	);
+    return (
+        <PageWrapper>
+            <main>
+                <SwiperComponent />
+                <CategorySection />
+            </main>
+        </PageWrapper>
+    );
 }
